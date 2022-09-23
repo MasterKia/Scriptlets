@@ -8,22 +8,29 @@ import {
  * @scriptlet trusted-click-elem
  *
  * @description
- * Clicks selected elements in a sequence
+ * Clicks selected elements in a given order, waiting for them to render in the DOM first.
  *
  * **Syntax**
  * ```
- * example.com#%#//scriptlet('trusted-click-elem', '.container > #target, .container > #target2', 'cookiewall', '/cookiepart/')
+ * example.com#%#//scriptlet('trusted-click-elem', '.container > #target, .container > #target2', 'hrefpart', '/cookiepart/')
  * ```
  *
- * - `selectors` — required, string with query selectors, delimited by comma.
- * - `hrefMatch` - optional, string, match page url, defaults to matching any url
+ * - `selectors` — required, string with query selectors delimited by comma.
+ * - `hrefMatch` - optional, string match page url, defaults to matching any url
  * - `cookieMatch` - optional, string or regex to match cookies, defaults to ignoring cookies
  *
  * **Examples**
+ * 1. Click elements by selector
  * ```
- * example.com#%#//scriptlet('trusted-click-elem') !!!!!!!!!!!!!
- *
- * example.com#%#//scriptlet('trusted-click-elem') !!!!!!!!!!!!!
+ * example.com#%#//scriptlet('trusted-click-elem', 'button[name='agree']')
+ * ```
+ * 2. Click multiple elements by selector and matching href of a page
+ * ```
+ * example.com#%#//scriptlet('trusted-click-elem', 'button[name='agree'], button[name='check], input[type="submit"][value="akkoord"]', '/cookie wall')
+ * ```
+ * 3. Click multiple elements by selector and matching cookies string of a page
+ * ```
+ * example.com#%#//scriptlet('trusted-click-elem', 'button[name='agree'], input[type="submit"][value="akkoord"]', '', '/(?=(?:.*\d){3})/')
  * ```
  */
 /* eslint-enable max-len */
